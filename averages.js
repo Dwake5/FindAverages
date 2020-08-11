@@ -1,5 +1,5 @@
-findAverages = (numbArr, dp) => {
-  let median, mode, modal, range = 0
+const findAverages = (numbArr, dp) => {
+  let median, mode, mean, range = 0
   let length = numbArr.length
 
   // Range
@@ -9,17 +9,17 @@ findAverages = (numbArr, dp) => {
 
   // Mean
   let sum = numbArr.reduce((a, b) => a + b, 0)
-  median = (sum/length).toFixed(dp)
+  mean = (sum/length).toFixed(dp)
 
   // Median
   let sorted = numbArr.sort((a, b) => a > b ? 1 : -1);
   if (length % 2 !== 0) {
-    modal = sorted[(length+1)/2]
+    median = sorted[(length+1)/2]
   } else {
-    modal = (sorted[length/2] + sorted[length/2+1]) / 2 
+    median = (sorted[length/2] + sorted[length/2+1]) / 2 
   }
 
-  // Modal
+  // Mode
   let frequency = {}; 
   let maxFreq = 0; 
   let modes = [];
@@ -41,15 +41,17 @@ findAverages = (numbArr, dp) => {
 
   console.log(
     'The range is: ' + range + "\n" +
+    'The mean is: ' + mean + "\n" +
     'The median is: ' + median + "\n" +
-    'The modal is: ' + modal + "\n" +
     'The mode(s) is: '+ mode
   )
+  return[range, mean, median, mode]
 }
 
-findAverages([1,1,4,4,7,12,-3,92,70], 2)
-// => 
-// The range is: 95.00
-// The median is: 20.89
-// The modal is: 7
-// The mode(s) is: 1,4
+findAverages([119,75,5,6,84,56,41,10,42,1,2,34,42,25,92,71,0,4,30,90], 2)
+// =>
+// The range is: 184.00
+// The mean is: 54.65
+// The median is: 63.5
+// The mode(s) is: 10
+
