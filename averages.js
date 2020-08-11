@@ -1,4 +1,4 @@
-const findAverages = (numbArr, dp) => {
+const findAverages = (numbArr, dp=0) => {
   let median, mode, mean, range = 0
   let length = numbArr.length
 
